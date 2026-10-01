@@ -42,7 +42,7 @@
 </head>
 <body>
     <header>
-        <img src="Ahmetlogo.png" alt="Ahmet Deprem" class="logo-img">
+        <img src="Ahmetlogo.png" alt="Ahmet Deprem" class="logo-img" id="logoImg">
         <div class="top-controls">
             <button class="top-btn" onclick="openLocationModal()">Bölge Seç</button>
             <button class="top-btn" onclick="requestNotificationPermission()">Bildirim İzni</button>
@@ -117,6 +117,10 @@
             const isDark = document.getElementById('darkThemeToggle').checked;
             document.body.classList.toggle('dark-theme', isDark);
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            
+            // Tema değişimine göre logoyu güncelle
+            const logoImg = document.getElementById('logoImg');
+            logoImg.src = isDark ? 'Ahmetlogosiyah.png' : 'Ahmetlogo.png';
         }
 
         function openLocationModal() { document.getElementById('locationModal').classList.add('active'); }
@@ -150,6 +154,9 @@
             if (isDark) {
                 document.body.classList.add('dark-theme');
                 document.getElementById('darkThemeToggle').checked = true;
+                document.getElementById('logoImg').src = 'Ahmetlogosiyah.png';
+            } else {
+                document.getElementById('logoImg').src = 'Ahmetlogo.png';
             }
             document.getElementById('notifToggle').checked = ('Notification' in window && Notification.permission === 'granted');
             const savedMinMag = localStorage.getItem('min_mag');
