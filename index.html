@@ -67,7 +67,7 @@
                 </div>
                 <div class="setting-row">
                     <span>Minimum Şiddet</span>
-                    <input type="number" id="minMagnitude" value="3.0" step="0.1" min="0" max="10" style="width: 60px; text-align: center;">
+                    <input type="number" id="minMagnitude" value="3.0" step="0.1" min="0" max="10" onchange="saveSettings()" style="width: 60px; text-align: center;">
                 </div>
                 <div class="setting-row">
                     <span>Tema (Koyu Gri)</span>
@@ -175,8 +175,6 @@
                         const lng = eq.lng !== undefined ? eq.lng : '-';
                         const provider = eq.provider || 'Kandilli';
                         const earthquakeId = eq.earthquake_id || '-';
-                        
-                        // Revizyon bilgisi null veya boş ise "Bilgi Alınamadı" yazdırıyoruz
                         const rev = (eq.rev !== undefined && eq.rev !== null && eq.rev !== '') ? eq.rev : 'Bilgi Alınamadı';
 
                         let timeOnly = 'Bilgi Alınamadı';
